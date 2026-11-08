@@ -1,0 +1,173 @@
+<!--
+  DIGITAL BUSINESS CARD - standalone page
+  =================================================================
+  This is now a full, self-contained page (not a Wix embed fragment)
+  meant to be hosted directly - e.g. on GitHub Pages - with
+  www.grieserdesign.com/card set up as a 301 redirect to it in Wix's
+  URL Redirect Manager. That sidesteps Wix's HTML-iframe sandbox,
+  which was blocking the call/email/share buttons.
+
+  To update: edit this file, re-upload it to the GitHub repo as
+  index.html. No Wix re-paste needed since Wix only redirects to it.
+
+  Heads up on call/email links breaking when opened inside another
+  app's built-in browser (Gmail app, Messenger, Instagram/LinkedIn
+  DMs, etc.): those in-app browsers often block tel:/mailto: links
+  regardless of hosting. The fix on the viewer's end is tapping the
+  "..." or share icon in that in-app browser and choosing "Open in
+  Safari"/"Open in Chrome." The "Share This Card" button uses the
+  phone's native share sheet, which sidesteps this when Greg shares
+  the link directly.
+
+  Self-contained - no external icon fonts or libraries, all icons
+  are inline SVG so it renders identically everywhere.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greg Grieser - Grieser Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f3f1ec;
+    padding: 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="dbc-card" style="width:100%;max-width:340px;margin:0 auto;font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+
+  <div style="background:#fdfcf9;border-radius:20px;overflow:hidden;border:1px solid #e6e4dd;box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+
+    <!-- Banner photo -->
+    <div style="height:140px;background:#cfcac0;">
+      <img src="https://static.wixstatic.com/media/b7b615_cd58793b946b4fc2a1744e8a31a354f1~mv2.jpg" alt=""
+           style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+
+    <!-- Profile photo, overlapping the banner -->
+    <div style="position:relative;z-index:1;text-align:center;margin-top:-52px;">
+      <img src="https://static.wixstatic.com/media/b7b615_f9366ad4939547ac97598ee0408a730e~mv2.jpg" alt="Greg Grieser"
+           style="width:104px;height:104px;border-radius:50%;object-fit:cover;border:4px solid #fdfcf9;display:block;margin:0 auto;background:#eee;">
+    </div>
+
+    <!-- Name -->
+    <div style="text-align:center;padding:14px 20px 4px;">
+      <p style="margin:0;font-family:'Playfair Display',Georgia,serif;font-size:24px;letter-spacing:0.5px;">
+        <span style="font-weight:400;color:#8a8578;">Greg</span>
+        <span style="font-weight:600;color:#2a2925;"> Grieser</span>
+      </p>
+    </div>
+
+    <!-- Contact rows -->
+    <div style="padding:16px 28px 6px;">
+      <div style="display:flex;flex-direction:column;gap:13px;">
+
+        <a href="tel:+14439442156" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#2a2925;font-size:14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a39d8e" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.35 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.25a2 2 0 0 1 2.11-.45c.74.33 1.53.56 2.34.68A2 2 0 0 1 22 16.92z"/></svg>
+          443.944.2156
+        </a>
+
+        <a href="mailto:greg@grieserdesign.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#2a2925;font-size:14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a39d8e" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          greg@grieserdesign.com
+        </a>
+
+        <a href="https://www.grieserdesign.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#2a2925;font-size:14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a39d8e" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg>
+          www.grieserdesign.com
+        </a>
+
+      </div>
+
+      <!-- Save contact -->
+      <button id="dbc-save-btn" onclick="dbcSaveContact()"
+        style="width:100%;margin-top:18px;padding:12px;border-radius:0;border:1px solid rgb(151,165,181);background:rgb(151,165,181);color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;cursor:pointer;">
+        SAVE CONTACT
+      </button>
+
+      <!-- Share via text -->
+      <button id="dbc-share-btn" onclick="dbcShareCard()"
+        style="width:100%;margin-top:8px;padding:12px;border-radius:0;border:1px solid rgb(151,165,181);background:#fff;color:rgb(151,165,181);font-size:13px;font-weight:600;letter-spacing:1px;cursor:pointer;">
+        SHARE THIS CARD
+      </button>
+
+      <!-- Social icons -->
+      <div style="display:flex;justify-content:center;gap:12px;margin:18px 0 6px;">
+
+        <a href="https://www.instagram.com/grieserdesign/" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:50%;background:rgb(151,165,181);display:flex;align-items:center;justify-content:center;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="#fff"/></svg>
+        </a>
+
+      </div>
+
+      <p style="text-align:center;font-size:12px;font-weight:600;letter-spacing:1px;color:#8a8578;margin:14px 0 16px;">GRIESER DESIGN</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function dbcSaveContact() {
+  var firstName = "Greg";
+  var lastName  = "Grieser";
+  var org       = "Grieser Design";
+  var title     = "";
+  var phone     = "+14439442156";
+  var email     = "greg@grieserdesign.com";
+  var website   = "https://www.grieserdesign.com/";
+
+  var vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:" + lastName + ";" + firstName + ";;;",
+    "FN:" + firstName + " " + lastName,
+    "ORG:" + org,
+    "TITLE:" + title,
+    "TEL;TYPE=CELL:" + phone,
+    "EMAIL:" + email,
+    "URL:" + website,
+    "END:VCARD"
+  ].join("\n");
+
+  var blob = new Blob([vcard], { type: "text/vcard" });
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement("a");
+  link.href = url;
+  link.download = firstName + "_" + lastName + ".vcf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function dbcShareCard() {
+  var cardUrl = "https://www.grieserdesign.com/card";
+  var shareText = "Here's my digital business card:";
+
+  // Prefer the native share sheet (lets the person pick Messages, Mail, WhatsApp, etc.)
+  if (navigator.share) {
+    navigator.share({
+      title: "Greg Grieser - Grieser Design",
+      text: shareText,
+      url: cardUrl
+    }).catch(function() { /* user cancelled - do nothing */ });
+    return;
+  }
+
+  // Fallback: open a pre-filled text message with the link
+  var body = encodeURIComponent(shareText + " " + cardUrl);
+  window.location.href = "sms:?&body=" + body;
+}
+</script>
+
+</body>
+</html>
